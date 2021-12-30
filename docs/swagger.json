@@ -161,6 +161,38 @@
                 }
             }
         },
+        "/api/v1/book/{id}": {
+            "get": {
+                "description": "get string by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Novel"
+                ],
+                "summary": "書",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "novel ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/novel.Novel"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/listNovel": {
             "get": {
                 "description": "get string by ID",

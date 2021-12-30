@@ -99,6 +99,27 @@ paths:
           schema:
             $ref: '#/definitions/account.HTTPError'
       summary: Show a account
+  /api/v1/book/{id}:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: novel ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/novel.Novel'
+      summary: 書
+      tags:
+      - Novel
   /api/v1/book/search:
     get:
       consumes:

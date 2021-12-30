@@ -79,6 +79,16 @@ func BookSearch(c *fiber.Ctx) error {
 	return c.JSON(util.Success(repositories.GetAllData(query)))
 }
 
+// ListNovel godoc
+// @Summary 書
+// @Description get string by ID
+// @Tags Novel
+// @version 1.0
+// @Accept  json
+// @Produce  json
+// @Param id path int true "novel ID"
+// @Success 200 {object} Novel
+// @Router /api/v1/book/{id} [get]
 func BookInfo(c *fiber.Ctx) error {
 	sid := c.Params("id")
 	id, err := strconv.Atoi(sid)
@@ -86,4 +96,18 @@ func BookInfo(c *fiber.Ctx) error {
 		return c.JSON("error")
 	}
 	return c.JSON(util.Success(repositories.GetInfoData(id)))
+}
+
+func BookDetail(c *fiber.Ctx) error {
+	sid := c.Params("id")
+	spage := c.Params("page")
+	id, err := strconv.Atoi(sid)
+	if err != nil {
+		return c.JSON("error")
+	}
+	page, err := strconv.Atoi(spage)
+	if err != nil {
+		return c.JSON("error")
+	}
+	return c.JSON(util.Success(repositories.GetDetailData(id, page)))
 }

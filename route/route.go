@@ -20,6 +20,7 @@ func SetApiRoutes(app *fiber.App) {
 			v1.Get("/accounts/:id", account.ShowAccount)
 			v1.Get("/book/search", novel.BookSearch)
 			v1.Get("/book/:id", novel.BookInfo)
+			v1.Get("/book/:id/:page", novel.BookDetail)
 		}
 	}
 }
