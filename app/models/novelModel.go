@@ -28,7 +28,7 @@ type NovelInfo struct {
 	Title          string    `json:"title"`
 	Author         string    `json:"author"`
 	NovelNameId    int       `json:"novel_name_id"`
-	ComicNameId    int       `json:"comic_name_id"`
+	ComicNameId    string    `json:"comic_name_id"`
 	LongInfo       string    `json:"long_info"`
 	Tags           string    `json:"tags"`
 	Cat            string    `json:"cat"`
@@ -68,4 +68,11 @@ type NovelInfo4 struct {
 	DataUpdateTime time.Time `json:"data_update_time"`
 	Page           int       `json:"page"`
 	PageTitle      string    `json:"page_title"`
+}
+
+type BookList struct {
+	ID          int    `gorm:"AUTO_INCREMENT"`
+	Title       string `json:"title"`
+	Page        int    `json:"page"`
+	NovelNameId int    `json:"novel_name_id"`
 }

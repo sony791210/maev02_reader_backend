@@ -207,6 +207,45 @@ var doc = `{
                 }
             }
         },
+        "/api/v1/comic/list/{comicname}/{page}": {
+            "get": {
+                "description": "get string by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Comic"
+                ],
+                "summary": "Show a comic page list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "comicname",
+                        "name": "comicname",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "page",
+                        "name": "page",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/comic.Comic"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/listNovel": {
             "get": {
                 "description": "get string by ID",
@@ -242,6 +281,14 @@ var doc = `{
         },
         "account.HTTPError": {
             "type": "object"
+        },
+        "comic.Comic": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            }
         },
         "novel.Novel": {
             "type": "object",

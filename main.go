@@ -35,7 +35,7 @@ func main() {
 	repositories.DB = db
 	app.Use(cors.New())
 	app.Get("/swagger/*", fiberSwagger.Handler)
-
+	app.Static("/static", "./public")
 	route.SetApiRoutes(app)
 
 	log.Fatal(app.Listen(":2000"))

@@ -111,3 +111,13 @@ func BookDetail(c *fiber.Ctx) error {
 	}
 	return c.JSON(util.Success(repositories.GetDetailData(id, page)))
 }
+
+func BookList(c *fiber.Ctx) error {
+	sid := c.Params("id")
+	id, err := strconv.Atoi(sid)
+	if err != nil {
+		return c.JSON("error")
+	}
+
+	return c.JSON(util.Success(repositories.GetBookListData(id)))
+}

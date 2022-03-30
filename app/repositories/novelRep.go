@@ -73,3 +73,12 @@ func GetDetailData(id int, page int) interface{} {
 	}
 	return novelDetailData
 }
+
+func GetBookListData(id int) *[]models.BookList {
+	var bookListData *[]models.BookList
+	err := DB.Table("novel").Where("novel_name_id =?", id).Find(&bookListData)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return bookListData
+}

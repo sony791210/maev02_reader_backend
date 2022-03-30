@@ -23,5 +23,7 @@ go run main.go
 會產生相關 swager  文件   
 [http://127.0.0.1:2000/swagger/index.html](http://127.0.0.1:2000/swagger/index.html)
 
+使用swag前可以除錯 
+swag init 
 
 

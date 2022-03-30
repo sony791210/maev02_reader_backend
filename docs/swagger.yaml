@@ -7,6 +7,11 @@ definitions:
     type: object
   account.HTTPError:
     type: object
+  comic.Comic:
+    properties:
+      id:
+        type: string
+    type: object
   novel.Novel:
     properties:
       id:
@@ -141,6 +146,32 @@ paths:
       summary: Show a NovelContext
       tags:
       - Novel
+  /api/v1/comic/list/{comicname}/{page}:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: comicname
+        in: path
+        name: comicname
+        required: true
+        type: string
+      - description: page
+        in: path
+        name: page
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/comic.Comic'
+      summary: Show a comic page list
+      tags:
+      - Comic
   /api/v1/listNovel:
     get:
       consumes:
