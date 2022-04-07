@@ -26,6 +26,15 @@ func PageList(c *fiber.Ctx) error {
 	return c.JSON(util.Success(repositories.GetComicPageList(comicname, page)))
 }
 
+
+
+
+func BookInfo(c *fiber.Ctx) error {
+	comicId := c.Params("id")
+	return c.JSON(util.Success(repositories.GetComicInfoData(comicId)))
+
+}
+
 type Comic struct {
 	Id string
 }

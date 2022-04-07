@@ -27,7 +27,7 @@ type NovelInfo struct {
 	ID             int       `gorm:"AUTO_INCREMENT"`
 	Title          string    `json:"title"`
 	Author         string    `json:"author"`
-	NovelNameId    int       `json:"novel_name_id"`
+	NovelNameId    string    `json:"novel_name_id"`
 	ComicNameId    string    `json:"comic_name_id"`
 	LongInfo       string    `json:"long_info"`
 	Tags           string    `json:"tags"`
