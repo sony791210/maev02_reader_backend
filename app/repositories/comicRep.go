@@ -6,11 +6,8 @@ import (
 	"test/app/models"
 )
 
-
-
 func GetComicPageList(comicname string, page string) interface{} {
 	var filePath []string
-	
 
 	files, err := ioutil.ReadDir("./public/" + comicname + "/" + page)
 	if err != nil {
@@ -21,21 +18,18 @@ func GetComicPageList(comicname string, page string) interface{} {
 		filePath = append(filePath, "/static/"+comicname+"/"+page+"/"+file.Name())
 	}
 
-	// var infoData interface{}
-	// infoData =GetComicInfoData(comicname)
+	var data interface{}
 
-	// var outputData := models.ComicListInfo{
-	// 	FilePath:filePath,
-	// 	Title:"123",
-	// 	page:page
-	// }
-	
+	data = GetComicInfoData(comicname)
 
+	outputData := models.ComicListInfo{
+		FilePath: filePath,
+		Title:    data.(models.ComicInfo4).Title,
+		Page:     page,
+	}
 
-
-	return filePath
+	return outputData
 }
-
 
 func GetComicInfoData(id string) interface{} {
 	var infoData models.ComicInfo4

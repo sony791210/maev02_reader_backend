@@ -24,11 +24,8 @@ func SetApiRoutes(app *fiber.App) {
 			v1.Get("/book/:id/:page", novel.BookDetail)
 			v1.Get("/bookList/:id", novel.BookList)
 
-
-
 			v1.Get("/comic/:id", comic.BookInfo)
-			v1.Get("/comic/list/:comicname/:page", comic.PageList)
-
+			v1.Get("/comic/:comicname/:page", comic.PageList)
 
 		}
 	}

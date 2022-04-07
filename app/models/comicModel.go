@@ -2,12 +2,11 @@ package models
 
 import "time"
 
-
 type ComicInfo4 struct {
 	ID             int       `gorm:"AUTO_INCREMENT"`
 	Title          string    `json:"title"`
 	Author         string    `json:"author"`
-	ComicNameId    string     `json:"comic_name_id"`
+	ComicNameId    string    `json:"comic_name_id"`
 	LongInfo       string    `json:"long_info"`
 	Tags           string    `json:"tags"`
 	Cat            string    `json:"cat"`
@@ -16,9 +15,8 @@ type ComicInfo4 struct {
 	DataUpdateTime time.Time `json:"data_update_time"`
 }
 
-
 type ComicListInfo struct {
-	FilePath []string
-	Title string
-	page int
+	FilePath []string `json:"filePath"`
+	Title    string   `json:"title"`
+	Page     string   `json:"page"`
 }
