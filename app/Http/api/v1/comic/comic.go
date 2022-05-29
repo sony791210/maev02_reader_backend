@@ -1,6 +1,7 @@
 package comic
 
 import (
+	"strconv"
 	"test/app/util"
 
 	"test/app/repositories"
@@ -22,12 +23,12 @@ import (
 func PageList(c *fiber.Ctx) error {
 	comicname := c.Params("comicname")
 	page := c.Params("page")
-
-	return c.JSON(util.Success(repositories.GetComicPageList(comicname, page)))
+	id, err := strconv.Atoi(page)
+	if err != nil {
+		return c.JSON("error")
+	}
+	return c.JSON(util.Success(repositories.GetComicPageList(comicname, id)))
 }
-
-
-
 
 func BookInfo(c *fiber.Ctx) error {
 	comicId := c.Params("id")

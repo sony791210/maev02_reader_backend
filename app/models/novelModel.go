@@ -74,5 +74,6 @@ type BookList struct {
 	ID          int    `gorm:"AUTO_INCREMENT"`
 	Title       string `json:"title"`
 	Page        int    `json:"page"`
+	Name        int    `json:"name"`
 	NovelNameId int    `json:"novel_name_id"`
 }

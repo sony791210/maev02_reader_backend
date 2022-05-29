@@ -3,24 +3,57 @@ package repositories
 import (
 	"fmt"
 	"io/ioutil"
+	"net/url"
 	"test/app/models"
 )
 
-func GetComicPageList(comicname string, page string) interface{} {
+func GetComicPageList(comicname string, page int) interface{} {
 	var filePath []string
 
-	files, err := ioutil.ReadDir("./public/" + comicname + "/" + page)
+	var infoData models.Comic
+
+	//轉換 url 亂碼轉換中文
+	url2Name, err := url.QueryUnescape(comicname)
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	for _, file := range files {
-		filePath = append(filePath, "/static/"+comicname+"/"+page+"/"+file.Name())
+	err2 := DB.Table("comic").Where("name = ? AND page = ?", url2Name, page).First(&infoData)
+
+	if err2 != nil {
+		fmt.Println(err2)
 	}
 
+	fmt.Println(infoData.Title)
+
+	// 進入DB找路徑出來
+	files, err3 := ioutil.ReadDir("./public/" + url2Name + "/" + infoData.Title)
+	//
+	if err3 != nil {
+		fmt.Println(err3)
+	}
+
+	//for _, s := range comicname {
+	//	fmt.Printf("%c\t%d\t%T\n", s, s, s)
+	//}
+
+	//dirs, err := ioutil.ReadDir("./public/" + url2Name)
+	//
+	//for _, dir := range dirs {
+	//	fmt.Println(dir.Name())
+	//}
+
+	//if err3 != nil {
+	//	fmt.Println(err3)
+	//}
+	//
+	for _, file := range files {
+		filePath = append(filePath, "/static/"+url2Name+"/"+infoData.Title+"/"+file.Name())
+	}
+	//
 	var data interface{}
 
-	data = GetComicInfoData(comicname)
+	data = GetComicInfoData(url2Name)
 
 	outputData := models.ComicListInfo{
 		FilePath: filePath,
@@ -29,6 +62,7 @@ func GetComicPageList(comicname string, page string) interface{} {
 	}
 
 	return outputData
+
 }
 
 func GetComicInfoData(id string) interface{} {

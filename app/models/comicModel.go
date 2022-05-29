@@ -18,5 +18,12 @@ type ComicInfo4 struct {
 type ComicListInfo struct {
 	FilePath []string `json:"filePath"`
 	Title    string   `json:"title"`
-	Page     string   `json:"page"`
+	Page     int      `json:"page"`
+}
+
+type Comic struct {
+	ID    int    `gorm:"AUTO_INCREMENT"`
+	Name  string `json:"name"`
+	Title string `json:"title"`
+	Page  string `json:"page"`
 }
