@@ -65,11 +65,17 @@ func GetComicPageList(comicname string, page int) interface{} {
 
 }
 
-func GetComicInfoData(id string) interface{} {
+func GetComicInfoData(comicname string) interface{} {
 	var infoData models.ComicInfo4
 
+	//轉換 url 亂碼轉換中文
+	url2Name, errurl2Name := url.QueryUnescape(comicname)
+	if errurl2Name != nil {
+		fmt.Println(errurl2Name)
+	}
+
 	err := DB.Table("novel_info").Select("novel_info.*").
-		Where("novel_info.comic_name_id = ?", id).First(&infoData)
+		Where("novel_info.comic_name_id = ?", url2Name).First(&infoData)
 
 	if err != nil {
 		fmt.Println(err)
