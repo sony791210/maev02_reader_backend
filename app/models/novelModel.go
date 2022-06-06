@@ -59,7 +59,7 @@ type NovelInfo4 struct {
 	Title          string    `json:"title"`
 	Author         string    `json:"author"`
 	NovelNameId    int       `json:"novel_name_id"`
-	ComicNameId    int       `json:"comic_name_id"`
+	ComicNameId    string    `json:"comic_name_id"`
 	LongInfo       string    `json:"long_info"`
 	Tags           string    `json:"tags"`
 	Cat            string    `json:"cat"`
