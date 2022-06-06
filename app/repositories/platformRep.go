@@ -31,3 +31,14 @@ func GetPlatFormIntroduce(types string) *[]models.NovelInfo4 {
 
 	return data
 }
+
+func GetPlatFormLastInfo() *[]models.NovelInfo4 {
+	var data *[]models.NovelInfo4
+
+	err := DB.Table("novel_info").Order("update_time DESC").Limit(4).Find(&data)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	return data
+}

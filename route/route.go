@@ -24,6 +24,7 @@ func SetApiRoutes(app *fiber.App) {
 			v1.Get("/book/search", novel.BookSearch)
 			v1.Get("/platform/search", platform.Search)
 			v1.Get("/platform/introduce/:types", platform.Introduce)
+			v1.Get("/platform/lastinfo", platform.LastInfo)
 			//小說相關
 			v1.Get("/book/:id", novel.BookInfo)
 			v1.Get("/book/:id/:page", novel.BookDetail)

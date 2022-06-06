@@ -1,7 +1,6 @@
 package platform
 
 import (
-	"fmt"
 	"test/app/util"
 
 	"test/app/repositories"
@@ -16,8 +15,10 @@ func Search(c *fiber.Ctx) error {
 }
 
 func Introduce(c *fiber.Ctx) error {
-
 	types := c.Params("types")
-	fmt.Println(types)
 	return c.JSON(util.Success(repositories.GetPlatFormIntroduce(types)))
+}
+
+func LastInfo(c *fiber.Ctx) error {
+	return c.JSON(util.Success(repositories.GetPlatFormLastInfo()))
 }
