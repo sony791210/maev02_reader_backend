@@ -24,7 +24,7 @@ func GetPlatFormIntroduce(types string) *[]models.NovelInfo4 {
 		contentType = "png"
 	}
 
-	err := DB.Table("novel_info").Where("content_type = ?", contentType).Order("RAND()").Limit(6).Find(&data)
+	err := DB.Table("novel_info").Where("content_type = ?", contentType).Order("RAND()").Limit(3).Find(&data)
 	if err != nil {
 		fmt.Println(err)
 	}
