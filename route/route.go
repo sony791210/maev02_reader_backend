@@ -3,11 +3,11 @@ package route
 import (
 	"log"
 
+	"github.com/gofiber/fiber/v2"
 	"test/app/Http/api/v1/account"
 	"test/app/Http/api/v1/comic"
 	"test/app/Http/api/v1/novel"
-
-	"github.com/gofiber/fiber/v2"
+	"test/app/Http/api/v1/platform"
 )
 
 func SetApiRoutes(app *fiber.App) {
@@ -19,11 +19,16 @@ func SetApiRoutes(app *fiber.App) {
 			v1.Get("/ListNovelTitle/:id", novel.ListNovelTitle)
 			v1.Get("/NovelContext/:id", novel.NovelContext)
 			v1.Get("/accounts/:id", account.ShowAccount)
+
+			//平台相關
 			v1.Get("/book/search", novel.BookSearch)
+			v1.Get("/platform/search", platform.Search)
+			v1.Get("/platform/introduce/:types", platform.Introduce)
+			//小說相關
 			v1.Get("/book/:id", novel.BookInfo)
 			v1.Get("/book/:id/:page", novel.BookDetail)
 			v1.Get("/bookList/:id", novel.BookList)
-
+			//漫畫相關
 			v1.Get("/comic/:id", comic.BookInfo)
 			v1.Get("/comic/:comicname/:page", comic.PageList)
 
