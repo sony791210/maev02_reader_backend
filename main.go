@@ -5,8 +5,6 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 
-	fiberSwagger "github.com/arsmn/fiber-swagger/v2"
-
 	_ "test/docs"
 
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -34,8 +32,8 @@ func main() {
 	db := database.Init()
 	repositories.DB = db
 	app.Use(cors.New())
-	app.Get("/swagger/*", fiberSwagger.Handler)
-	app.Static("/static", "./public")
+	//app.Get("/swagger/*", fiberSwagger.Handler)
+	//app.Static("/static", "./public")
 	route.SetApiRoutes(app)
 
 	log.Fatal(app.Listen(":2000"))

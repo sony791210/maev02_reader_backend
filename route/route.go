@@ -1,8 +1,6 @@
 package route
 
 import (
-	"log"
-
 	"github.com/gofiber/fiber/v2"
 	"test/app/Http/api/v1/account"
 	"test/app/Http/api/v1/comic"
@@ -15,6 +13,9 @@ func SetApiRoutes(app *fiber.App) {
 	{
 		v1 := api.Group("/v1", middleware1)
 		{
+			//拿取所有platform的資料
+			v1.Get("/list/all", platform.List)
+
 			v1.Get("/listNovel", novel.ListNovel)
 			v1.Get("/ListNovelTitle/:id", novel.ListNovelTitle)
 			v1.Get("/NovelContext/:id", novel.NovelContext)
@@ -38,7 +39,7 @@ func SetApiRoutes(app *fiber.App) {
 }
 
 func middleware1(c *fiber.Ctx) error {
-	log.Println("test")
+	//log.Println("test")
 	// 执行该中间件之后的逻辑
 	return c.Next()
 }

@@ -42,3 +42,27 @@ func GetPlatFormLastInfo() *[]models.NovelInfo4 {
 
 	return data
 }
+
+func GetPlatFormList() interface{} {
+	var PlatformInfoPngData []*models.PlatformInfo
+	var PlatformInfoTxtData []*models.PlatformInfo
+	var PlatformInfoMp4Data []*models.PlatformInfo
+	var PlatformInfoAllData []models.PlatformInfo
+
+	err := DB.Table("platform_info").Where("content_type=png").Limit(5).Find(&PlatformInfoPngData)
+	if err != nil {
+		fmt.Println(err)
+	}
+	err = DB.Table("platform_info").Where("content_type=txt").Limit(5).Find(&PlatformInfoTxtData)
+	if err != nil {
+		fmt.Println(err)
+	}
+	err = DB.Table("platform_info").Where("content_type=mp4").Limit(5).Find(&PlatformInfoMp4Data)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	PlatformInfoAllData = append(PlatformInfoAllData, PlatformInfoPngData..., PlatformInfoTxtData..., PlatformInfoMp4Data...)
+
+	return PlatformInfoAllData
+}

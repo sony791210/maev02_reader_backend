@@ -3,7 +3,6 @@ module test
 go 1.17
 
 require (
-	github.com/arsmn/fiber-swagger/v2 v2.20.0
 	github.com/gofiber/fiber/v2 v2.22.0
 	github.com/joho/godotenv v1.4.0
 	github.com/swaggo/swag v1.7.6
@@ -16,6 +15,7 @@ require (
 	github.com/PuerkitoBio/purell v1.1.1 // indirect
 	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
+	github.com/arsmn/fiber-swagger/v2 v2.20.0 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.1 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect

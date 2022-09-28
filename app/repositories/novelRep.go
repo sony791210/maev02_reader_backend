@@ -7,6 +7,7 @@ import (
 
 func GetNovelList() *[]models.NovelList {
 	var result *[]models.NovelList
+	fmt.Println(DB)
 	err := DB.Table("novel_list").Find(&result)
 	if err != nil {
 		fmt.Println(err)
@@ -77,6 +78,7 @@ func GetDetailData(id int, page int) interface{} {
 func GetBookListData(id int) *[]models.BookList {
 	var bookListData *[]models.BookList
 	err := DB.Table("novel").Where("novel_name_id =?", id).Find(&bookListData)
+
 	if err != nil {
 		fmt.Println(err)
 	}

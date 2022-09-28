@@ -22,3 +22,7 @@ func Introduce(c *fiber.Ctx) error {
 func LastInfo(c *fiber.Ctx) error {
 	return c.JSON(util.Success(repositories.GetPlatFormLastInfo()))
 }
+
+func List(c *fiber.Ctx) error {
+	return c.JSON(util.Success(repositories.GetPlatFormList()))
+}

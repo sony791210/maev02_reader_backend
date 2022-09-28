@@ -1,6 +1,7 @@
 package novel
 
 import (
+	"fmt"
 	"strconv"
 	"test/app/util"
 
@@ -75,6 +76,7 @@ type Novel struct {
 // @Success 200 {object} Novel
 // @Router /api/v1/book/search  [get]
 func BookSearch(c *fiber.Ctx) error {
+	fmt.Println("here")
 	query := c.Query("query")
 	return c.JSON(util.Success(repositories.GetAllData(query)))
 }
