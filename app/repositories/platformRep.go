@@ -44,25 +44,25 @@ func GetPlatFormLastInfo() *[]models.NovelInfo4 {
 }
 
 func GetPlatFormList() interface{} {
-	var PlatformInfoPngData []*models.PlatformInfo
-	var PlatformInfoTxtData []*models.PlatformInfo
-	var PlatformInfoMp4Data []*models.PlatformInfo
-	var PlatformInfoAllData []models.PlatformInfo
+	var PlatformInfoPngData []models.PlatformInfo
+	var PlatformInfoTxtData []models.PlatformInfo
+	var PlatformInfoMp4Data []models.PlatformInfo
 
-	err := DB.Table("platform_info").Where("content_type=png").Limit(5).Find(&PlatformInfoPngData)
+	err := DB.Table("platform_info").Where("content_type='png'").Order("update_time DESC").Limit(5).Find(&PlatformInfoPngData)
 	if err != nil {
 		fmt.Println(err)
 	}
-	err = DB.Table("platform_info").Where("content_type=txt").Limit(5).Find(&PlatformInfoTxtData)
+	err = DB.Table("platform_info").Where("content_type='txt'").Order("update_time DESC").Limit(5).Find(&PlatformInfoTxtData)
 	if err != nil {
 		fmt.Println(err)
 	}
-	err = DB.Table("platform_info").Where("content_type=mp4").Limit(5).Find(&PlatformInfoMp4Data)
+	err = DB.Table("platform_info").Where("content_type='mp4'").Order("update_time DESC").Limit(5).Find(&PlatformInfoMp4Data)
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	PlatformInfoAllData = append(PlatformInfoAllData, PlatformInfoPngData..., PlatformInfoTxtData..., PlatformInfoMp4Data...)
+	PlatformInfoAllData := append(PlatformInfoPngData, PlatformInfoTxtData...)
+	PlatformInfoAllData = append(PlatformInfoAllData, PlatformInfoMp4Data...)
 
 	return PlatformInfoAllData
 }
