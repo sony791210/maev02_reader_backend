@@ -5,13 +5,13 @@ import (
 	"test/app/models"
 )
 
-func GetPlatFormData(query string) *[]models.NovelInfo {
-	var novelInfoData *[]models.NovelInfo
-	err := DB.Table("novel_info").Where("title LIKE ?", "%"+query+"%").Find(&novelInfoData)
+func GetPlatFormData(query string) *[]models.PlatformInfo {
+	var PlatformInfoData *[]models.PlatformInfo
+	err := DB.Table("platform_info").Where("title LIKE ?", "%"+query+"%").Find(&PlatformInfoData)
 	if err != nil {
 		fmt.Println(err)
 	}
-	return novelInfoData
+	return PlatformInfoData
 }
 
 func GetPlatFormIntroduce(types string) *[]models.NovelInfo4 {
