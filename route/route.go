@@ -15,6 +15,8 @@ func SetApiRoutes(app *fiber.App) {
 		{
 			//拿取所有platform的資料
 			v1.Get("/list/all", platform.List)
+			//查詢平台內所有資訊
+			v1.Get("/platform/search", platform.Search)
 
 			v1.Get("/listNovel", novel.ListNovel)
 			v1.Get("/ListNovelTitle/:id", novel.ListNovelTitle)
@@ -23,7 +25,6 @@ func SetApiRoutes(app *fiber.App) {
 
 			//平台相關
 			v1.Get("/book/search", novel.BookSearch)
-			v1.Get("/platform/search", platform.Search)
 
 			v1.Get("/platform/introduce/:types", platform.Introduce)
 			v1.Get("/platform/lastinfo", platform.LastInfo)

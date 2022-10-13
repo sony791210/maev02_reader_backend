@@ -74,8 +74,8 @@ func GetComicInfoData(comicname string) interface{} {
 		fmt.Println(errurl2Name)
 	}
 
-	err := DB.Table("novel_info").Select("novel_info.*").
-		Where("novel_info.comic_name_id = ?", url2Name).First(&infoData)
+	err := DB.Table("platform_info").Select("platform_info.*").
+		Where("platform_info.comic_name_id = ?", url2Name).First(&infoData)
 
 	if err != nil {
 		fmt.Println(err)
