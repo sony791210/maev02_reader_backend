@@ -18,16 +18,15 @@ func GetComicPageList(comicname string, page int) interface{} {
 		fmt.Println(err)
 	}
 
-	err2 := DB.Table("comic").Where("name = ? AND page = ?", url2Name, page).First(&infoData)
+	err2 := DB.Table("comic").Where("comic_name_id = ? AND page = ?", url2Name, page-1).First(&infoData)
 
 	if err2 != nil {
 		fmt.Println(err2)
 	}
-
-	fmt.Println(infoData.Title)
+	fmt.Println(infoData.Path)
 
 	// 進入DB找路徑出來
-	files, err3 := ioutil.ReadDir("./public/" + url2Name + "/" + infoData.Title)
+	files, err3 := ioutil.ReadDir(infoData.Path)
 	//
 	if err3 != nil {
 		fmt.Println(err3)
@@ -48,16 +47,13 @@ func GetComicPageList(comicname string, page int) interface{} {
 	//}
 	//
 	for _, file := range files {
-		filePath = append(filePath, "/static/"+url2Name+"/"+infoData.Title+"/"+file.Name())
+		filePath = append(filePath, infoData.Path+"/"+file.Name())
 	}
 	//
-	var data interface{}
-
-	data = GetComicInfoData(url2Name)
 
 	outputData := models.ComicListInfo{
 		FilePath: filePath,
-		Title:    data.(models.ComicInfo4).Title,
+		Title:    infoData.Title,
 		Page:     page,
 	}
 

@@ -2,3 +2,4 @@ vendor
 .env
 public
 .idea/
+public_download

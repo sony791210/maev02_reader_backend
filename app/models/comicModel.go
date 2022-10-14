@@ -23,7 +23,7 @@ type ComicListInfo struct {
 
 type Comic struct {
 	ID    int    `gorm:"AUTO_INCREMENT"`
-	Name  string `json:"name"`
 	Title string `json:"title"`
 	Page  string `json:"page"`
+	Path  string `json:"path"`
 }
