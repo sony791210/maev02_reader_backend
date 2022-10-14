@@ -47,7 +47,7 @@ func GetComicPageList(comicname string, page int) interface{} {
 	//}
 	//
 	for _, file := range files {
-		filePath = append(filePath, infoData.Path+"/"+file.Name())
+		filePath = append(filePath, "/"+infoData.Path+"/"+file.Name())
 	}
 	//
 
