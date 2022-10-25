@@ -26,4 +26,7 @@ go run main.go
 使用swag前可以除錯 
 swag init 
 
-
+## 增加link 
+```  
+ ln -s ../maev02_reader_crawler/public_download/ 
+```
