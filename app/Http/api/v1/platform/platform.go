@@ -26,3 +26,7 @@ func LastInfo(c *fiber.Ctx) error {
 func List(c *fiber.Ctx) error {
 	return c.JSON(util.Success(repositories.GetPlatFormList()))
 }
+
+func BookList(c *fiber.Ctx) error {
+	return c.JSON(util.Success(repositories.GetPlatFormList()))
+}

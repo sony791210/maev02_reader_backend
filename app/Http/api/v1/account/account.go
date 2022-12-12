@@ -1,6 +1,7 @@
 package account
 
 import (
+	"test/app/repositories"
 	"test/app/util"
 
 	"github.com/gofiber/fiber/v2"
@@ -23,6 +24,24 @@ func ShowAccount(c *fiber.Ctx) error {
 		Id: c.Params("id"),
 	}))
 
+}
+
+func Login(c *fiber.Ctx) error {
+	payload := struct {
+		Account  string `json:"account"`
+		Password string `json:"password"`
+	}{}
+
+	if err := c.BodyParser(&payload); err != nil {
+		return err
+	}
+
+	tokenString, err := repositories.Login(payload.Account, payload.Password)
+
+	if err != nil {
+		return c.JSON(util.Fail())
+	}
+	return c.JSON(util.Success(tokenString))
 }
 
 type Account struct {

@@ -13,10 +13,14 @@ func SetApiRoutes(app *fiber.App) {
 	{
 		v1 := api.Group("/v1", middleware1)
 		{
+			//登入相關
+			v1.Post("/login", account.Login)
 			//拿取所有platform的資料
 			v1.Get("/list/all", platform.List)
 			//查詢平台內所有資訊
 			v1.Get("/platform/search", platform.Search)
+			//查詢目錄
+			v1.Get("/platform/list", platform.BookList)
 
 			v1.Get("/listNovel", novel.ListNovel)
 			v1.Get("/ListNovelTitle/:id", novel.ListNovelTitle)

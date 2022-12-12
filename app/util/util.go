@@ -17,5 +17,12 @@ func Success(data interface{}) fiber.Map {
 		"data":    data,
 		"message": "請求成功",
 	}
+}
 
+func Fail() fiber.Map {
+
+	return fiber.Map{
+		"code":    http.StatusUnauthorized,
+		"message": "請求失敗",
+	}
 }
